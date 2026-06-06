@@ -1,0 +1,225 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    
+}
+
+
+.login-container {
+    display: flex;
+    width: 100%;
+    max-width: 1200px;
+    height: 650px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.left-panel {
+    flex: 1;
+    background: #d0d5d2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+}
+
+.brand-wrapper {
+    text-align: center;
+    width: 100%;
+    max-width: 400px;
+}
+
+.brand-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    color: #1e2721;
+    line-height: 1.2;
+    margin-bottom: 10px;
+    font-weight: 700;
+    
+}
+
+.logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.main-logo {
+    max-width: 150%;
+    height: auto;
+    object-fit: contain;
+}
+
+.right-panel {
+    flex: 1;
+    background: radial-gradient(circle at top left, #29744c, #16462c);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    position: relative;
+}
+
+.login-card {
+    width: 100%;
+    max-width: 460px;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 40px;
+    padding: 50px 40px;
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 40px;
+}
+
+.card-header h2 {
+    font-family: 'Playfair Display', serif;
+    color: #ffffff;
+    font-size: 2.8rem;
+    font-weight: 700;
+}
+
+.card-header .line {
+    flex: 1;
+    height: 1.5px;
+    background-color: rgba(255, 255, 255, 0.6);
+    max-width: 60px;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-label {
+    color: #ffffff;
+    font-size: 0.95rem;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+    position: relative;
+    margin-bottom: 25px;
+}
+
+.icon-container {
+    width: 48px;
+    height: 48px;
+    background-color: #d1ebd9;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #1a4d31;
+    font-size: 1.1rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    z-index: 2;
+    position: absolute;
+    left: -15px;
+}
+
+.input-group input {
+    width: 100%;
+    height: 48px;
+    padding: 10px 45px 10px 50px;
+    border: none;
+    border-radius: 12px;
+    font-size: 0.95rem;
+    outline: none;
+    color: #333;
+    background-color: #ffffff;
+}
+
+.input-group input::placeholder {
+    color: #999999;
+}
+
+.password-toggle {
+    position: absolute;
+    right: 15px;
+    color: #1a4d31;
+    cursor: pointer;
+    font-size: 1.1rem;
+}
+
+.forgot-password-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: -10px;
+    margin-bottom: 40px;
+}
+
+.forgot-password {
+    color: #ffffff;
+    font-size: 0.85rem;
+    text-decoration: underline;
+    opacity: 0.9;
+    transition: opacity 0.2s;
+}
+
+.forgot-password:hover {
+    opacity: 1;
+}
+
+.login-btn {
+    width: 100%;
+    height: 54px;
+    background-color: #ffffff;
+    border: none;
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    color: #16462c;
+    font-size: 1.2rem;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+.login-btn:hover {
+    background-color: #f0f9f4;
+    transform: translateY(-2px);
+}
+
+.login-btn i {
+    font-size: 1rem;
+}
+
+@media (max-width: 900px) {
+    .login-container {
+        flex-direction: column;
+        height: auto;
+        max-width: 500px;
+        margin: 20px;
+    }
+    .left-panel, .right-panel {
+        padding: 40px 20px;
+    }
+    .login-card {
+        padding: 40px 25px;
+    }
+}

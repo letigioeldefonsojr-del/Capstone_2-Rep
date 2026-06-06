@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Almares 328 Dashboard</title>
+    <link rel="stylesheet" href="Inventory.css">
+</head>
+<body>
+
+    <div class="container">
+
+        <div class="left-panel">
+            <div class="sidebar">
+                <h1 class="logo">Almares 328</h1>
+
+                <div class="menu">
+                    <a href="dashboard.html" class="menu-btn">Dashboard</a>
+                    <a href="sales.html" class="menu-btn">Sales</a>
+                    <a href="inventory.html" class="menu-btn active">Inventory</a>
+                    <a href="notification.html" class="menu-btn">Notification</a>
+                    <a href="order.html" class="menu-btn">Orders</a>
+                </div>
+
+                <button class="logout">Logout</button>
+            </div>
+        </div>
+
+        <div class="right-panel">
+
+            <div class="top-bar">
+                <h2>Search:</h2>
+                <input type="text" class="search-input">
+                <button class="add-btn" onclick="openModal()">+</button>
+            </div>
+
+            <div class="inventory-table">
+                <div class="table-header">
+                    <div>Product</div>
+                    <div>Quantity</div>
+                    <div>Status</div>
+                </div>
+                
+                <div id="inventoryBody"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="modal" id="productModal">
+        <div class="modal-content">
+            <h2>Add Product</h2>
+
+            <label for="product">Product Name</label>
+            <input type="text" id="product">
+
+            <label for="quantity">Quantity</label>
+            <input type="number" id="quantity">
+
+            <label for="status">Status</label>
+            <select id="status">
+                <option>In Stock</option>
+                <option>Low Stock</option>
+                <option>Urgent Restock</option>
+            </select>
+
+            <div class="modal-buttons">
+                <button class="save-btn" onclick="saveProduct()">Save</button>
+                <button class="cancel-btn" onclick="closeModal()">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="Inventory.js"></script>
+</body>
+</html>

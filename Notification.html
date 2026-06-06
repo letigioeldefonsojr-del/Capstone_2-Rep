@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Almares 328 Dashboard</title>
+    <link rel="stylesheet" href="Notification.css">
+</head>
+<body>
+
+    <div class="container">
+        
+        <div class="left-panel">
+            <div class="sidebar">
+                <h1 class="logo">Almares 328</h1>
+
+                <div class="menu">
+                    <a href="dashboard.html" class="menu-btn">Dashboard</a>
+                    <a href="sales.html" class="menu-btn">Sales</a>
+                    <a href="inventory.html" class="menu-btn">Inventory</a>
+                    <a href="notification.html" class="menu-btn active">Notification</a>
+                    <a href="order.html" class="menu-btn">Orders</a>
+                </div>
+
+                <button class="logout">Logout</button>
+            </div>
+        </div>
+
+        <div class="right-panel">
+            
+            <div class="status-cards">
+                <div class="card">
+                    <div class="card-content">
+                        <img src="Instock.png" alt="In Stock" class="status-icon">
+                        <h3>In Stock</h3>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-content">
+                        <img src="Lowstock.png" alt="Low Stock" class="status-icon">
+                        <h3>Low Stock</h3>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-content">
+                        <img src="Urgentrestock.png" alt="Urgent Restock" class="status-icon">
+                        <h3>Urgent Restock</h3>
+                    </div>
+                </div>
+            </div>
+
+            <div class="notifications-area">
+                <div class="notif-header urgent">
+                    <img src="Urgentrestock.png" alt="Urgent Alert" class="header-icon">
+                    <h2>Urgent - Immediate Action Required</h2>
+                </div>
+                
+                <div class="notif-list" id="urgentList"></div>
+
+                <div class="notif-header low-stock">
+                    <img src="Lowstock.png" alt="Low Stock Warning" class="header-icon">
+                    <h2>Low Stock Warnings</h2>
+                </div>
+
+                <div class="notif-list" id="lowStockList"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+</html> 

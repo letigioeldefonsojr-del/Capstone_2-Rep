@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Almares 328 Dashboard</title>
+    <link rel="stylesheet" href="Dashboard.css">
+</head>
+<body>
+
+    <div class="container">
+        <div class="left-panel">
+            <div class="sidebar">
+                <h1 class="logo">Almares 328</h1>
+
+                <div class="menu">
+                    <a href="dashboard.html" class="menu-btn active">Dashboard</a>
+                    <a href="sales.html" class="menu-btn">Sales</a>
+                    <a href="inventory.html" class="menu-btn">Inventory</a>
+                    <a href="notification.html" class="menu-btn">Notification</a>
+                    <a href="order.html" class="menu-btn">Orders</a>
+                </div>
+
+                <button class="logout">Logout</button>
+            </div>
+        </div>
+
+        <div class="main-content">
+            
+            <div class="cards">
+                <div class="card product">
+                    <img src="product.png" alt="Total Products Icon" class="card-icon">
+                    <h2>300</h2>
+                    <p>Total Product</p>
+                </div>
+
+                <div class="card restock">
+                    <img src="alarm.png" alt="Urgent Stock Icon" class="card-icon">
+                    <h2>1</h2>
+                    <p>Urgent Restock</p>
+                </div>
+
+                <div class="card sales">
+                    <img src="sales.png" alt="Today's Sales Icon" class="card-icon">
+                    <h2>12</h2>
+                    <p>Today's Sales</p>   
+                </div>
+
+                <div class="card orders">
+                    <img src="order.png" alt="Orders Icon" class="card-icon">
+                    <h2>3</h2>
+                    <p>Orders</p>  
+                </div>
+            </div>
+
+            <div class="notification">
+                <h3>⚠ Urgent Restock</h3>
+                <p>
+                    1 item need restocking. Please review and order supplies
+                </p>
+                <button class="view-btn">
+                    View Notification
+                </button>
+            </div>
+
+        </div>
+        
+    </div>
+
+</body>
+</html>
