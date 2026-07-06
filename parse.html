@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bookstore XML Display</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 30px;
+            background-color: #f4f4f4;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #2c7be5;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        table {
+            margin-top: 20px;
+            border-collapse: collapse;
+            width: 80%;
+            background-color: white;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 10px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #2c7be5;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>Bookstore XML Data</h1>
+
+<button onclick="loadXML()">Load Book Data</button>
+
+<div id="demo"></div>
+
+<script>
+function loadXML() {
+    fetch("bookstore.xml")
+        .then(response => response.text())
+        .then(data => {
+            let parser = new DOMParser();
+            let xmlDoc = parser.parseFromString(data, "text/xml");
+
+            let books = xmlDoc.getElementsByTagName("book");
+
+            let table = `
+                <table>
+                    <tr>
+                        <th>Category</th>
+                        <th>Title</th>
+                        <th>Language</th>
+                        <th>Author</th>
+                        <th>Year</th>
+                        <th>Price</th>
+                    </tr>
+            `;
+
+            for (let i = 0; i < books.length; i++) {
+                let category = books[i].getAttribute("category");
+                let title = books[i].getElementsByTagName("title")[0].textContent;
+                let lang = books[i].getElementsByTagName("title")[0].getAttribute("lang");
+                let author = books[i].getElementsByTagName("author")[0].textContent;
+                let year = books[i].getElementsByTagName("year")[0].textContent;
+                let price = books[i].getElementsByTagName("price")[0].textContent;
+
+                table += `
+                    <tr>
+                        <td>${category}</td>
+                        <td>${title}</td>
+                        <td>${lang}</td>
+                        <td>${author}</td>
+                        <td>${year}</td>
+                        <td>${price}</td>
+                    </tr>
+                `;
+            }
+
+            table += `</table>`;
+
+            document.getElementById("demo").innerHTML = table;
+        });
+}
+</script>
+
+</body>
+</html>
