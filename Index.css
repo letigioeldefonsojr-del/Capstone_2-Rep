@@ -1,0 +1,324 @@
+/* ===========================
+   ROOT / RESET
+   =========================== */
+:root {
+    --brand-green: #14532d;
+    --brand-green-dark: #0a2f1a;
+    --brand-green-mid: #1d6b3f;
+    --light-bg: #D8DBD6;
+    --text-dark: #1f2a24;
+    --text-muted: #6b7a72;
+    --danger: #ef4444;
+    --font-display: 'Playfair Display', 'Georgia', serif;
+    --font-body: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+    --radius: 14px;
+    --transition: 0.25s ease-in-out;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--font-body);
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #eef0ec;
+}
+
+/* ===========================
+   LOGIN CONTAINER
+   =========================== */
+.login-container {
+    display: flex;
+    width: 100%;
+    max-width: 1200px;
+    height: 650px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+/* ===========================
+   LEFT PANEL (brand)
+   =========================== */
+.left-panel {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 50px 40px;
+    background: #D3D3D3;
+}
+
+.brand-wrapper {
+    text-align: center;
+}
+
+.brand-title {
+    font-family: var(--font-display);
+    font-size: 2.4rem;
+    line-height: 1.25;
+    color: #1a1a1a;
+    font-weight: 700;
+    margin-bottom: 30px;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.brand-logo {
+    width: 480px;
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+    /* If Logo.png has a white/gray background baked into the file,
+       this blends it into the panel color instead of a hard box edge */
+
+}
+
+/* ===========================
+   RIGHT PANEL (form) - dark green
+   =========================== */
+.right-panel {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 50px 40px;
+    background: linear-gradient(160deg, var(--brand-green-mid) 0%, var(--brand-green) 55%, var(--brand-green-dark) 100%);
+}
+
+.login-card {
+    width: 100%;
+    max-width: 400px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 20px;
+    padding: 40px 34px;
+    backdrop-filter: blur(4px);
+}
+
+/* ===========================
+   CARD HEADER — "— Login —"
+   =========================== */
+.card-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 34px;
+}
+
+.card-header h2 {
+    font-family: var(--font-display);
+    font-size: 1.9rem;
+    color: #ffffff;
+    white-space: nowrap;
+}
+
+.card-header .line {
+    flex: 1;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.4);
+}
+
+/* ===========================
+   FORM ELEMENTS
+   =========================== */
+.input-label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 8px;
+    margin-top: 20px;
+}
+
+.input-label:first-of-type {
+    margin-top: 0;
+}
+
+.input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.icon-badge {
+    position: absolute;
+    left: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: rgba(15, 81, 50, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.icon-badge img {
+    width: 16px;
+    height: 16px;
+    object-fit: contain;
+}
+
+.input-wrapper input {
+    width: 100%;
+    height: 48px;
+    border: none;
+    border-radius: 10px;
+    background: #ffffff;
+    outline: none;
+    font-size: 0.92rem;
+    color: var(--text-dark);
+    padding: 0 44px 0 52px;
+    transition: box-shadow var(--transition);
+}
+
+.input-wrapper input::placeholder {
+    color: #a9b3ac;
+}
+
+.input-wrapper input:focus {
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.35);
+}
+
+.password-toggle {
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--brand-green);
+    cursor: pointer;
+    font-size: 0.95rem;
+    z-index: 2;
+}
+
+.password-toggle:hover {
+    color: var(--brand-green-dark);
+}
+
+/* ===========================
+   FORGOT PASSWORD + LOGIN BUTTON
+   =========================== */
+.forgot-password-container {
+    text-align: right;
+    margin-top: 10px;
+    margin-bottom: 26px;
+}
+
+.forgot-password {
+    font-size: 0.82rem;
+    color: #ffffff;
+    text-decoration: underline;
+    font-weight: 500;
+    transition: color var(--transition);
+}
+
+.forgot-password:hover {
+    color: #d4e8d6;
+}
+
+.back-to-login {
+    display: block;
+    text-align: center;
+    margin-top: 18px;
+    font-size: 0.82rem;
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+.back-to-login:hover {
+    color: #d4e8d6;
+}
+
+.login-btn {
+    width: 100%;
+    height: 50px;
+    border: none;
+    border-radius: 30px;
+    background: #ffffff;
+    color: var(--brand-green);
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: all var(--transition);
+}
+
+.login-btn:hover {
+    background: #eef7f0;
+    transform: translateY(-1px);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.2);
+}
+
+.login-btn:active {
+    transform: translateY(1px);
+}
+
+.login-btn i {
+    font-size: 0.8rem;
+    transition: transform var(--transition);
+}
+
+.login-btn:hover i {
+    transform: translateX(3px);
+}
+
+/* Keyboard accessibility */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible {
+    outline: 2px solid #ffffff;
+    outline-offset: 2px;
+}
+
+/* ===========================
+   RESPONSIVE
+   =========================== */
+@media (max-width: 760px) {
+    .login-container {
+        flex-direction: column;
+        max-width: 420px;
+        height: auto;
+    }
+
+    .left-panel {
+        padding: 36px 24px;
+    }
+
+    .brand-title {
+        font-size: 1.7rem;
+        margin-bottom: 20px;
+    }
+
+    .brand-logo {
+        width: 150px;
+    }
+
+    .right-panel {
+        padding: 36px 24px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation: none !important;
+        transition: none !important;
+    }
+}

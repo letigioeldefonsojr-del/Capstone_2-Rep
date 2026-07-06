@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Almares 328 Dashboard</title>
+    <title>Almares 328 - Notification</title>
     <link rel="stylesheet" href="Notification.css">
 </head>
 <body>
 
-    <div class="container">
-        
-        <div class="left-panel">
-            <div class="sidebar">
+    <div class="container" id="sidebarContainer">
+
+        <div class="drawer-container" id="leftPanel">
+            <div class="drawer">
                 <h1 class="logo">Almares 328</h1>
 
                 <div class="menu">
@@ -22,31 +22,28 @@
                     <a href="order.html" class="menu-btn">Orders</a>
                 </div>
 
-                <button class="logout">Logout</button>
+              <div class="sidebar-footer">
+                    <button class="logout">Logout</button>
+                </div>
             </div>
         </div>
 
         <div class="right-panel">
-            
+
             <div class="status-cards">
-                <div class="card">
+                <div class="card in-stock-card">
                     <div class="card-content">
                         <img src="Instock.png" alt="In Stock" class="status-icon">
                         <h3>In Stock</h3>
+                        <p class="count" id="inStockCount">0</p>
                     </div>
                 </div>
 
-                <div class="card">
-                    <div class="card-content">
-                        <img src="Lowstock.png" alt="Low Stock" class="status-icon">
-                        <h3>Low Stock</h3>
-                    </div>
-                </div>
-
-                <div class="card">
+                <div class="card urgent-card">
                     <div class="card-content">
                         <img src="Urgentrestock.png" alt="Urgent Restock" class="status-icon">
                         <h3>Urgent Restock</h3>
+                        <p class="count" id="urgentCount">0</p>
                     </div>
                 </div>
             </div>
@@ -56,20 +53,21 @@
                     <img src="Urgentrestock.png" alt="Urgent Alert" class="header-icon">
                     <h2>Urgent - Immediate Action Required</h2>
                 </div>
-                
+
                 <div class="notif-list" id="urgentList"></div>
 
-                <div class="notif-header low-stock">
-                    <img src="Lowstock.png" alt="Low Stock Warning" class="header-icon">
-                    <h2>Low Stock Warnings</h2>
+                <div class="notif-header in-stock">
+                    <img src="Instock.png" alt="In Stock" class="header-icon">
+                    <h2>In Stock</h2>
                 </div>
 
-                <div class="notif-list" id="lowStockList"></div>
+                <div class="notif-list" id="inStockList"></div>
             </div>
 
         </div>
 
     </div>
 
+    <script src="Notification.js"></script>
 </body>
-</html> 
+</html>

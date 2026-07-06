@@ -1,103 +1,120 @@
-const chartElement = document.getElementById('salesBarChart').getContext('2d');
-const dropdownMenu = document.getElementById('timeframeSelector');
+// Sales2.js
 
-const startYear = 2027;
-const totalBlocksOfFiveYears = 4; 
+document.addEventListener('DOMContentLoaded', () => {
 
-const graphDataOptions = {};
-let dropdownHTMLContent = '';
+    // ================= SIDEBAR DRAWER (open on hover, close on leave) =================
+    const container = document.getElementById('sidebarContainer');
+    const leftPanel = document.getElementById('leftPanel');
+    const logoutBtn = document.querySelector('.logout');
 
+    leftPanel.addEventListener('mouseenter', () => {
+        container.classList.add('drawer-open');
+    });
 
-for (let b = 0; b < totalBlocksOfFiveYears; b++) {
-    const blockStart = startYear + (b * 5);
-    const blockEnd = blockStart + 4;
-    const blockKey = `${blockStart}-${blockEnd}`;
-    const blockLabel = `Years: ${blockStart} - ${blockEnd}`;
+    leftPanel.addEventListener('mouseleave', () => {
+        container.classList.remove('drawer-open');
+    });
 
-    const labelsArray = [];
-    const dataArray = [];
+    // ================= SALES BAR CHART =================
+    const chartElement = document.getElementById('salesBarChart').getContext('2d');
+    const dropdownMenu = document.getElementById('timeframeSelector');
 
-  
-    for (let year = blockStart; year <= blockEnd; year++) {
-        labelsArray.push(year.toString());
-        dataArray.push(Math.floor(Math.random() * 45) + 10);
-    }
-
-    graphDataOptions[blockKey] = {
-        labels: labelsArray,
-        data: dataArray
+    // Sample datasets for each timeframe
+    const graphDataOptions = {
+        weekly: {
+            label: 'Weekly',
+            labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+            data: [22, 18, 30, 27, 35, 48, 41]
+        },
+        monthly: {
+            label: 'Monthly',
+            labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4'],
+            data: [38, 45, 33, 52]
+        },
+        yearly: {
+            label: 'Yearly',
+            labels: ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
+            data: [25, 30, 28, 35, 33, 40, 42, 38, 45, 41, 48, 50]
+        }
     };
 
-    
-    dropdownHTMLContent += `<option value="${blockKey}">${blockLabel}</option>`;
-}
+    // Populate dropdown
+    let dropdownHTMLContent = '';
+    Object.keys(graphDataOptions).forEach(key => {
+        dropdownHTMLContent += `<option value="${key}">${graphDataOptions[key].label}</option>`;
+    });
+    dropdownMenu.innerHTML = dropdownHTMLContent;
 
+    const defaultKey = 'weekly';
+    const defaultDataset = graphDataOptions[defaultKey];
+    dropdownMenu.value = defaultKey;
 
-dropdownMenu.innerHTML = dropdownHTMLContent;
-
-
-const defaultBlockKey = `${startYear}-${startYear + 4}`;
-const defaultDataset = graphDataOptions[defaultBlockKey];
-
-
-const salesChart = new Chart(chartElement, {
-    type: 'bar', 
-    data: {
-        labels: defaultDataset.labels, 
-        datasets: [{
-            data: defaultDataset.data, 
-            backgroundColor: '#4285f4', 
-            borderRadius: 6,           
-            borderWidth: 0
-        }]
-    },
-    options: {
-        responsive: true,
-        maintainAspectRatio: false, 
-        plugins: {
-            legend: {
-                display: false 
-            }
+    const salesChart = new Chart(chartElement, {
+        type: 'bar',
+        data: {
+            labels: defaultDataset.labels,
+            datasets: [{
+                data: defaultDataset.data,
+                backgroundColor: '#4285f4',
+                borderRadius: 6,
+                borderWidth: 0
+            }]
         },
-        scales: {
-            x: {
-                grid: {
-                    display: false 
-                },
-                ticks: {
-                    color: '#093a20', 
-                    font: {
-                        size: 14,
-                        weight: '700'
-                    }
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    display: false
                 }
             },
-            y: {
-                min: 0,
-                max: 60, 
-                ticks: {
-                    stepSize: 10,
-                    color: '#093a20', 
-                    font: {
-                        size: 15,
-                        weight: '700'
+            scales: {
+                x: {
+                    grid: {
+                        display: false
+                    },
+                    ticks: {
+                        color: '#093a20',
+                        font: {
+                            size: 14,
+                            weight: '700'
+                        }
                     }
                 },
-                grid: {
-                    color: 'rgba(9, 58, 32, 0.15)', 
-                    lineWidth: 1
+                y: {
+                    min: 0,
+                    max: 60,
+                    ticks: {
+                        stepSize: 10,
+                        color: '#093a20',
+                        font: {
+                            size: 15,
+                            weight: '700'
+                        }
+                    },
+                    grid: {
+                        color: 'rgba(9, 58, 32, 0.15)',
+                        lineWidth: 1
+                    }
                 }
             }
         }
+    });
+
+    dropdownMenu.addEventListener('change', (event) => {
+        const selectedKey = event.target.value;
+        const newDataset = graphDataOptions[selectedKey];
+
+        salesChart.data.labels = newDataset.labels;
+        salesChart.data.datasets[0].data = newDataset.data;
+
+        salesChart.update();
+    });
+
+    if (logoutBtn) {
+        logoutBtn.addEventListener('click', () => {
+        window.location.href = 'Index.html';
+    });
     }
-});
 
-dropdownMenu.addEventListener('change', (event) => {
-    const selectedBlock = event.target.value;
-    const newDataset = graphDataOptions[selectedBlock];
-
-    salesChart.data.labels = newDataset.labels;
-    salesChart.data.datasets[0].data = newDataset.data;
-
-    salesChart.update();
 });

@@ -5,12 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Almares 328 Dashboard</title>
     <link rel="stylesheet" href="Dashboard.css">
+    <script src="Dashboard.js"></script>
 </head>
 <body>
 
-    <div class="container">
-        <div class="left-panel">
-            <div class="sidebar">
+    <div class="container" id="sidebarContainer">
+        
+        <div class="drawer-container" id="leftPanel">
+            <div class="drawer">
                 <h1 class="logo">Almares 328</h1>
 
                 <div class="menu">
@@ -19,13 +21,16 @@
                     <a href="inventory.html" class="menu-btn">Inventory</a>
                     <a href="notification.html" class="menu-btn">Notification</a>
                     <a href="order.html" class="menu-btn">Orders</a>
-                </div>
 
-                <button class="logout">Logout</button>
+                </div>
+                
+                <div class="sidebar-footer">
+                    <button class="logout">Logout</button>
+                </div>
             </div>
         </div>
 
-        <div class="main-content">
+            <div class="main-content">
             
             <div class="cards">
                 <div class="card product">
@@ -40,12 +45,6 @@
                     <p>Urgent Restock</p>
                 </div>
 
-                <div class="card sales">
-                    <img src="sales.png" alt="Today's Sales Icon" class="card-icon">
-                    <h2>12</h2>
-                    <p>Today's Sales</p>   
-                </div>
-
                 <div class="card orders">
                     <img src="order.png" alt="Orders Icon" class="card-icon">
                     <h2>3</h2>
@@ -53,19 +52,18 @@
                 </div>
             </div>
 
-            <div class="notification">
+            <div class="notification urgent">
                 <h3>⚠ Urgent Restock</h3>
-                <p>
-                    1 item need restocking. Please review and order supplies
-                </p>
-                <button class="view-btn">
-                    View Notification
-                </button>
+                <p>1 item need restocking. Please review and order supplies</p>
+                <button class="notif-btn" onclick="window.location.href='notification.html'">View Notification</button>
             </div>
 
+            <div class="notification pending">
+                <h3>⚠ Pending Orders</h3>
+                <p>3 items pending Order. Please review to accomplish.</p>
+                <button class="ord-btn" onclick="window.location.href='order.html'">View Orders</button>
+            </div>
         </div>
-        
     </div>
-
 </body>
 </html>

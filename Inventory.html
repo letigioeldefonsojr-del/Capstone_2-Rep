@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Almares 328 Dashboard</title>
+    <title>Almares 328 - Inventory</title>
     <link rel="stylesheet" href="Inventory.css">
 </head>
 <body>
 
-    <div class="container">
+    <div class="container" id="sidebarContainer">
 
-        <div class="left-panel">
-            <div class="sidebar">
+        <div class="drawer-container" id="leftPanel">
+            <div class="drawer">
                 <h1 class="logo">Almares 328</h1>
 
                 <div class="menu">
@@ -22,7 +22,9 @@
                     <a href="order.html" class="menu-btn">Orders</a>
                 </div>
 
-                <button class="logout">Logout</button>
+                <div class="sidebar-footer">
+                    <button class="logout">Logout</button>
+                </div>
             </div>
         </div>
 
@@ -30,18 +32,22 @@
 
             <div class="top-bar">
                 <h2>Search:</h2>
-                <input type="text" class="search-input">
-                <button class="add-btn" onclick="openModal()">+</button>
+                <input type="text" class="search-input" placeholder="Search product...">
+                <button class="add-btn" id="addBtn">+</button>
             </div>
 
-            <div class="inventory-table">
+            <div class="inventory-table" id="inventoryTable">
                 <div class="table-header">
                     <div>Product</div>
+                    <div>Category</div>
                     <div>Quantity</div>
                     <div>Status</div>
+                    <div>Action</div>
                 </div>
-                
-                <div id="inventoryBody"></div>
+
+                <div class="table-body-spacer" id="bodySpacer">
+                    <div id="inventoryBody"></div>
+                </div>
             </div>
 
         </div>
@@ -55,19 +61,21 @@
             <label for="product">Product Name</label>
             <input type="text" id="product">
 
-            <label for="quantity">Quantity</label>
-            <input type="number" id="quantity">
+            <label for="category">Category</label>
+            <input type="text" id="category" placeholder="e.g. Beverages, Snacks">
 
-            <label for="status">Status</label>
-            <select id="status">
-                <option>In Stock</option>
-                <option>Low Stock</option>
-                <option>Urgent Restock</option>
-            </select>
+            <label for="quantity">Quantity</label>
+            <input type="number" id="quantity" min="0">
+
+            <p class="auto-status-note">
+                Status is set automatically:
+                <strong>20 or below → Urgent Restock</strong>,
+                <strong>21 or higher → In Stock</strong>
+            </p>
 
             <div class="modal-buttons">
-                <button class="save-btn" onclick="saveProduct()">Save</button>
-                <button class="cancel-btn" onclick="closeModal()">Cancel</button>
+                <button class="save-btn" id="saveBtn">Save</button>
+                <button class="cancel-btn" id="cancelBtn">Cancel</button>
             </div>
         </div>
     </div>
