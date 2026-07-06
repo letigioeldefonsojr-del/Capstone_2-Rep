@@ -3,14 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Almares 328 Dashboard</title>
-    <link rel="stylesheet" href="Order.css">
+    <title>Almares 328 Dashboard - Orders</title>
+    <link rel="stylesheet" href="order.css">
 </head>
 <body>
 
-    <div class="container">
-        <div class="left-panel">
-            <div class="sidebar">
+    <div class="container" id="sidebarContainer">
+
+        <!-- Sidebar (hover drawer) -->
+        <div class="drawer-container" id="leftPanel">
+            <div class="drawer">
                 <h1 class="logo">Almares 328</h1>
 
                 <div class="menu">
@@ -18,13 +20,102 @@
                     <a href="sales.html" class="menu-btn">Sales</a>
                     <a href="inventory.html" class="menu-btn">Inventory</a>
                     <a href="notification.html" class="menu-btn">Notification</a>
-                    <a href="order.html" class="menu-btn active">Orders</a>
+                    <a href="order.html" class="menu-btn active">
+                        Orders
+                        <span id="order-badge" class="nav-badge">0</span>
+                    </a>
                 </div>
 
-                <button class="logout">Logout</button>
+                <div class="sidebar-footer">
+                    <button class="logout">Logout</button>
+                </div>
             </div>
         </div>
+
+        <!-- Main Content -->
+        <main class="main-content">
+
+            <div class="page-header">
+                <h2>Orders Management</h2>
+                <p>Track and manage customer orders.</p>
+            </div>
+
+            <!-- Status Tabs -->
+            <div class="orders-status-tabs">
+
+                <button class="status-tab active" data-status="pending">
+                    Pending
+                    <span class="tab-count">0</span>
+                </button>
+
+                <button class="status-tab" data-status="processing">
+                    Processing
+                    <span class="tab-count">0</span>
+                </button>
+
+                <button class="status-tab" data-status="done">
+                    Done
+                    <span class="tab-count">0</span>
+                </button>
+
+            </div>
+
+            <!-- Orders Table -->
+            <div class="table-container">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Order ID</th>
+                            <th>Customer</th>
+                            <th>Date &amp; Time</th>
+                            <th>Items</th>
+                            <th>Total</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="orders-tbody">
+                        <!-- Filled by order.js -->
+                    </tbody>
+                </table>
+            </div>
+
+        </main>
+
     </div>
 
+    <!-- Order Details Modal -->
+    <div class="modal" id="order-detail-modal">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h3 id="order-modal-title">Order Details</h3>
+
+                <button id="order-modal-close" class="close-btn">
+                    &times;
+                </button>
+            </div>
+
+            <div class="modal-body" id="order-modal-body">
+                <!-- Filled by order.js -->
+            </div>
+
+            <div class="modal-footer">
+                <button id="order-modal-cancel" class="btn-secondary">
+                    Close
+                </button>
+
+                <button id="order-modal-complete" class="btn-primary">
+                    Mark as Complete
+                </button>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="order.js"></script>
 </body>
 </html>

@@ -2,7 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI', sans-serif;
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 body {
@@ -24,33 +24,52 @@ body {
     background: #d0d5d2;
 }
 
+/* ================= EXACT DASHBOARD HOVER DRAWER SYSTEM ================= */
 
-.left-panel {
-    display: flex;
+/* Initial state (Nakasara) */
+.drawer-container {
+    width: 20px; 
     height: 100%;
+    background-color: #0f5132; 
+    transition: width 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    flex-shrink: 0;
+    z-index: 10;
+    overflow: hidden;
+    cursor: pointer;
 }
 
-.sidebar {
-    width: 260px;
-    background: linear-gradient(
-        180deg,
-        #0f5132,
-        #14532d,
-        #052e16
-    );
+/* Ang mismong nilalaman ng sidebar */
+.drawer {
+    width: 260px; 
+    height: 100%;
+    background: linear-gradient(180deg, #0f5132, #14532d, #052e16);
     padding: 30px 20px;
     display: flex;
     flex-direction: column;
-    height: 100%;
+    opacity: 0; 
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
+/* KONTROLADO NG JAVASCRIPT: Aktibo kapag hinober */
+.container.drawer-open .drawer-container {
+    width: 260px; 
+}
+
+.container.drawer-open .drawer {
+    opacity: 1;       
+    visibility: visible;
+}
+
+/* ================= SIDEBAR INTERNAL COMPONENTS ================= */
 .logo {
     font-family: 'Playfair Display', serif;
     font-size: 2rem;
-    color: #1e2721;
+    color: #eff1f0; 
     line-height: 1.2;
     margin-bottom: 25px;
     font-weight: 700;
+    white-space: nowrap;
 }
 
 .menu {
@@ -60,53 +79,94 @@ body {
 }
 
 .menu-btn {
-    border: none;
     height: 50px;
     border-radius: 12px;
-    background: rgba(255, 255, 255, 0.08);
-    color: #d1d5db;
-    font-size: 16px;
+    background: rgba(255, 255, 255, 0.05); 
+    border: 1px solid rgba(255, 255, 255, 0.08); 
+    color: rgba(255, 255, 255, 0.7); 
+    font-size: 15px;
     font-weight: 600;
+    letter-spacing: 0.3px;
     cursor: pointer;
-    transition: .3s;
-    text-decoration: none;    
-    display: flex;            
-    align-items: center;      
-    padding-left: 20px;       
+    text-decoration: none; 
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    white-space: nowrap;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 .menu-btn:hover {
-    background: rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.15); 
+    color: #ffffff; 
+    padding-left: 25px; 
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .active {
+    background: #2ea043 !important; 
+    color: #ffffff !important;
+    border-color: rgba(46, 160, 67, 0.2);
+    box-shadow: 0 8px 20px rgba(46, 160, 67, 0.35); 
+    font-weight: 700;
+}
+
+.menu-btn.active:hover {
+    padding-left: 20px; 
     background: #2ea043;
-    color: white;
-    box-shadow: 0 4px 15px rgba(46, 160, 67, .4);
+}
+
+/* Footer layout area */
+.sidebar-footer {
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+    width: 100%;
 }
 
 .logout {
-    margin-top: auto;
+    width: 100%;
     height: 50px;
     border: none;
     border-radius: 12px;
-    background: #ef4444;
-    color: white;
-    font-size: 16px;
+    background: rgba(239, 68, 68, 0.15); 
+    border: 1px solid rgba(239, 68, 68, 0.2);
+    color: #ef4444; 
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
     cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: all 0.25s ease-in-out;
 }
 
+.logout:hover {
+    background: #ef4444; 
+    color: #ffffff; 
+    box-shadow: 0 6px 20px rgba(239, 68, 68, 0.4); 
+    transform: translateY(-2px); 
+}
 
+.logout:active {
+    transform: translateY(1px); 
+}
+/* --- Main Content Layout --- */
 .main-content {
     flex: 1;
-    padding: 40px;
+    padding: 30px;
+    background-color: #8fad8f;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    height: 100%;
+    gap: 25px; /* Magandang espasyo sa pagitan ng mga rows */
 }
 
-
+/* --- Cards Container (Top 3 Cards) --- */
 .cards {
     display: flex;
     gap: 20px;
@@ -114,92 +174,93 @@ body {
 }
 
 .card {
-    flex: 1;
     background: white;
-    border-radius: 25px;
-    padding: 20px 10px;
+    padding: 25px;
+    border-radius: 16px;
+    flex: 1;
     text-align: center;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, .05);
-    transition: .3s;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    border-top: 6px solid #e5e7eb; /* Base border */
+    transition: transform 0.2s ease;
 }
 
-.card:hover {
-    transform: translateY(-3px);
-}
-
+/* Color Coding para sa Cards */
+.card.product { border-top-color: #3b82f6; }
+.card.restock { border-top-color: #ef4444; }
+.card.orders  { border-top-color: #f59e0b; }
 
 .card-icon {
-    width: 65px;
-    height: 65px;
-    margin-bottom: 12px;
-    object-fit: contain;
+    width: 60px; /* Mas malaki na icons */
+    height: 60px;
+    margin-bottom: 15px;
 }
 
-
 .card h2 {
-    font-size: 42px;
-    margin-bottom: 5px;
-    font-weight: 700;
-    line-height: 1.1;
+    font-size: 34px;
+    font-weight: 800;
+    color: #1f2937;
+    margin: 5px 0;
 }
 
 .card p {
     font-size: 14px;
-    font-weight: 600;
-    color: #111827;
+    font-weight: 700;
+    color: #6b7280;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
 }
 
-.product { border-bottom: 6px solid #2563eb; }
-.product h2 { color: #2563eb; }
-
-.restock { border-bottom: 6px solid #ef4444; }
-.restock h2 { color: #ef4444; }
-
-.sales { border-bottom: 6px solid #16a34a; }
-.sales h2 { color: #16a34a; }
-
-.orders { border-bottom: 6px solid #c69239; }
-.orders h2 { color: #c69239; }
-
-
+/* --- Notification / Action Boxes --- */
 .notification {
-    width: 100%;
     background: white;
-    border: 2px solid #ef4444;
-    border-radius: 25px;
-    padding: 30px;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, .05);
+    padding: 25px;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    border-left: 8px solid #ccc; /* Default border */
 }
+
+/* Distinct colors para sa Notif at Orders */
+.notification.urgent { border-left-color: #ef4444; }
+.notification.pending { border-left-color: #f59e0b; }
 
 .notification h3 {
-    color: #dc2626;
-    font-size: 28px;
-    margin-bottom: 12px;
-    font-weight: 700;
+    color: #111827;
+    font-size: 20px;
+    margin-bottom: 5px;
 }
 
 .notification p {
-    font-size: 16px;
+    color: #4b5563;
+    font-size: 15px;
     margin-bottom: 20px;
-    color: #111827;
 }
 
-.view-btn {
-    background: #ef4444;
+/* --- Buttons Styling --- */
+.notif-btn {
+    background-color: #ef4444;
     color: white;
+    padding: 10px 24px;
+    border-radius: 8px;
     border: none;
-    padding: 12px 28px;
-    border-radius: 12px;
-    font-size: 16px;
     font-weight: 600;
     cursor: pointer;
-    transition: 0.2s;
+    transition: background 0.3s;
 }
 
-.view-btn:hover {
-    background: #dc2626;
+.notif-btn:hover { background-color: #dc2626; }
+
+.ord-btn {
+    background-color: #f59e0b;
+    color: white;
+    padding: 10px 24px;
+    border-radius: 8px;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s;
 }
+
+.ord-btn:hover { background-color: #d97706; }

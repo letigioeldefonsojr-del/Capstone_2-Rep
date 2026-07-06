@@ -9,9 +9,10 @@
 </head>
 <body>
 
-    <div class="container">
-        <div class="left-panel">
-            <div class="sidebar">
+    <div class="container" id="sidebarContainer">
+
+        <div class="drawer-container" id="leftPanel">
+            <div class="drawer">
                 <h1 class="logo">Almares 328</h1>
 
                 <div class="menu">
@@ -22,18 +23,20 @@
                     <a href="order.html" class="menu-btn">Orders</a>
                 </div>
 
-                <button class="logout">Logout</button>
+                <div class="sidebar-footer">
+                    <button class="logout">Logout</button>
+                </div>
             </div>
         </div>
 
-
         <div class="main-content">
+
             <div class="top-pagination-header">
                 <a href="Sales.html" class="sales-back-page-btn" title="Go to Back Page">
                     <img src="Back.png" alt="Back Page" class="back-img-icon">
                 </a>
             </div>
-                
+
             <div class="cards">
                 <div class="card">
                     <h3>Daily Sales</h3>
@@ -53,19 +56,20 @@
                     <p class="card-footer">Year-to-date total</p>
                 </div>
             </div>
+
             <div class="graph-wrapper">
                 <div class="graph-header">
-                    <select class="date-dropdown-btn" id="timeframeSelector">
-                        </select>
+                    <select class="date-dropdown-btn" id="timeframeSelector"></select>
                 </div>
-                
+
                 <div class="chart-section">
                     <canvas id="salesBarChart"></canvas>
                 </div>
             </div>
 
         </div>
-    </div>  
+    </div>
+
     <script src="Sales2.js"></script>
 </body>
 </html>
